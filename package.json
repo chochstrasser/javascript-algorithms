@@ -1,0 +1,23 @@
+{
+  "name": "javascript-algorithms",
+  "version": "1.0.0",
+  "description": "Javascript Algorithms",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chochstrasser/javascript-algorithms.git"
+  },
+  "author": "Chase Hochstrasser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chochstrasser/javascript-algorithms/issues"
+  },
+  "homepage": "https://github.com/chochstrasser/javascript-algorithms#readme",
+  "dependencies": {
+    "server": "^1.0.18"
+  }
+}
