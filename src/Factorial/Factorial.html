@@ -19,13 +19,14 @@
     </div>
     Answer: <label id='Result'></label>
     <script>
-        var SubmitBtn = () => {
-            var n = document.getElementById('Number').value;
-            var xhr = new XMLHttpRequest();
+        const SubmitBtn = () => {
+            let n = document.getElementById('Number').value;
+            let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    var response = this.responseText.substring(1, this.responseText.length -1);
-                    document.getElementById("Result").innerHTML = response;
+                    let value = this.responseText.split("\"");
+                    let len = value.length > 1 ? 1 : 0;
+                    document.getElementById("Result").innerText = value[len];
                 }
             }
             xhr.open('GET', '/algorithm/factorial?n=' + n, true);

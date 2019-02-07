@@ -1,58 +1,68 @@
-const express = require('express');
+import express from 'express'
 const app = express();
+import Alg from './src/Factorial/Factorial'
 
-const factorial = (n) => {
-  console.log('Start: factorial');
+const mainRouter = (req, res, next) => {
 
-  console.log('Result: ' + n);
-  return n;
-};
+    // get page name
+    let fileName = req.params.name;
 
-app.set('view engine', 'html');
+    // if no page name then set to home page
+    if (typeof fileName === 'undefined')
+      fileName = 'index.html';
 
-// Algorithms
-app.get('/algorithm/:name', (req, res, next) => {
-        var result;
+    // get page name without extention
+    const fileNameNoExt = fileName.replace(/\.[^/.]+$/, "");
 
-        // determine how to parse the data
-        switch (req.params.name) {
-          case 'factorial':
-            result = factorial(req.query.n);
-            break;
-          default: break;
-        }
+    // set send options
+    let options = {
+      root: __dirname + '/public/',
+      dotfiles: 'deny',
+      headers: {
+          'x-timestamp': Date.now(),
+          'x-sent': true
+      }
+    };
 
-        // return result
-        res.json(result);
-});
-
-// HTML files
-app.get('/', (req, res) => {
-  res.redirect('index.html');
-});
-app.get('/:name', (req, res, next) => {
-
-      // get page name
-      const fileName = req.params.name;
-
-      const options = {
-        root: __dirname + '/public/',
+    // if not default page then change root path
+    if (fileNameNoExt !== 'index')
+      options = {
+        root: __dirname + '/src/' + fileNameNoExt + '/',
         dotfiles: 'deny',
         headers: {
             'x-timestamp': Date.now(),
             'x-sent': true
         }
-      };
+      }
 
-      // display page
-      res.sendFile(fileName, options, (err) => {
-        if (err) {
-          next(err);
-        } else {
-          console.log('Sent:', fileName);
-        }
-      });
+    // display page
+    res.sendFile(fileName, options, (err) => {
+      if (err) next(err);
+      else console.log('Sent:', fileName);
+    });
+}
+
+// HTML files
+app.get('/', (req, res, next) => {
+  mainRouter(req, res, next);  
+});
+app.get('/:name', (req, res, next) => {
+  mainRouter(req, res, next);    
+});
+
+// Algorithms
+app.get('/algorithm/:name', (req, res, next) => {
+  var result;
+
+  // determine how to parse the data
+  switch (req.params.name) {
+    case 'factorial': result = Alg.factorial(req.query.n); break;
+    default: break;
+  }
+
+  // return result
+  res.json(result);
 });
 
 // listen
-app.listen('3000');
+app.listen('3000', () => console.log('app listening on port 3000!'));
