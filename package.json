@@ -5,7 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon start.js",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "repository": {
     "type": "git",
@@ -21,7 +27,10 @@
     "server": "^1.0.18"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.3.1",
+    "babel-jest": "^24.1.0",
     "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0"
+    "babel-register": "^6.26.0",
+    "jest": "^24.1.0"
   }
 }

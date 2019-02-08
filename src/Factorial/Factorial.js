@@ -1,6 +1,6 @@
 export default {
   factorial(n) {
-    console.log('Start: ' + n + ' factorial');
+    //console.log('Start: ' + n + ' factorial');
     let res;
 
     // basic
@@ -17,7 +17,7 @@ export default {
     // advanced
     
 
-    console.log('Result: ' + res);
+    //console.log('Result: ' + res);
     return res;
   }
 };
