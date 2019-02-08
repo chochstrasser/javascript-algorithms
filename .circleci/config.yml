@@ -7,8 +7,9 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
-          name: upadte-npm
-          command: 'sudo npm install -g npm@latest'
+          name: setup-npm
+          command: |
+          npm install -g npm@latest
       - restore_cache:
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
           key: dependency-cache-{{ checksum "package.json" }}
