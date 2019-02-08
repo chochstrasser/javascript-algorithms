@@ -8,27 +8,27 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
-        name: upadte-npm
-        command: 'sudo npm install -g npm@latest'
+          name: upadte-npm
+          command: 'sudo npm install -g npm@latest'
       - restore_cache:
-        # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-        key: dependency-cache-{{ checksum "package.json" }}
+          # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
-        name: install-nodemon
-        command: 'npm install -g nodemon'
+          name: install-nodemon
+          command: 'npm install -g nodemon'
       - run:
-        name: install-babel-register
-        command: 'npm install babel-register --save-dev'
+          name: install-babel-register
+          command: 'npm install babel-register --save-dev'
       - run:
-        name: install-babel-preset-env
-        command: 'npm install babel-preset-env --save-dev'
+          name: install-babel-preset-env
+          command: 'npm install babel-preset-env --save-dev'
       - save_cache: # special step to save the dependency cache
-        key: dependency-cache-{{ checksum "package.json" }}
-        paths:
-          - ./node_modules
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       - run: # run tests
-        name: test
-        command: npm test
+          name: test
+          command: npm test
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
           path: test-results.xml
