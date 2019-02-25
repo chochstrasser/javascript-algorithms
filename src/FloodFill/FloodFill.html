@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Algorithms - FloodFill</title>
+    <meta chartset="utf-8">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        #Array {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>FloodFill</h1>
+    <a href='/'>Home page</a>
+    <p>Flood fill, also called seed fill, is an algorithm that determines the area connected to a given node in a multi-demensial array.</p>
+    <p></p>
+    Try out muy solution below.
+    <div>
+        <input id='Array' type='text' class='' value='' placeholder='Enter 1D or 2D array'>
+        <input id='Row' type='text' class='' value='' placeholder='Enter row index'>
+        <input id='Column' type='text' class='' value='' placeholder='Enter column index'>
+        <button onclick="SubmitBtn()">Submit</button>
+    </div>
+    Answer: <label id='Result'></label>
+    <div>
+        <h5>Recursion:</h5>
+<pre><code class="js">let count = 0;
+let visited = {};
+numOfOnesRecursive = (list, x, y) => {
+    if (!list[x] || !list[x][y])
+        return;
+    if (list[x][y] === 0 || (typeof visited[x + ',' + y] !== 'undefined' && visited[x + ',' + y]))
+        return;
+    count++;
+    visited[x + ',' + y] = true;
+    numOfOnesRecursive(list, x, y-1);
+    numOfOnesRecursive(list, x, y+1);
+    numOfOnesRecursive(list, x-1, y);
+    numOfOnesRecursive(list, x+1, y);
+    return count;
+}</code></pre>
+    </div>
+    <script>
+        const SubmitBtn = () => {
+            let array = document.getElementById('Array').value;
+            let row = document.getElementById('Row').value;
+            let column = document.getElementById('Column').value;
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let value = this.responseText.split("\"");
+                    let len = value.length > 1 ? 1 : 0;
+                    document.getElementById("Result").innerText = value[len];
+                }
+            }
+            xhr.open('GET', '/algorithm/floodfill?array=' + array + '&row=' + row + '&column=' + column, true);
+            xhr.setRequestHeader('Content-Type', 'text/plain');
+            xhr.send();
+        };
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import express from 'express'
 const app = express();
-import Alg from './src/Factorial/Factorial'
+import * as Algorithm from './src/Algorithm';
 
 const mainRouter = (req, res, next) => {
 
@@ -56,7 +56,8 @@ app.get('/algorithm/:name', (req, res, next) => {
 
   // determine how to parse the data
   switch (req.params.name) {
-    case 'factorial': result = Alg.factorial(req.query.n); break;
+    case 'factorial': result = Algorithm.Factorial(req.query.n); break;
+    case 'floodfill': result = Algorithm.FloodFill(req.query.array, req.query.row, req.query.column); break;
     default: break;
   }
 

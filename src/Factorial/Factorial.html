@@ -3,21 +3,36 @@
 <head>
     <title>Javascript Algorithms - Factorial</title>
     <meta chartset="utf-8">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
     <h1>Factorial</h1>
     <a href='/'>Home page</a>
     <p>A factorial is the product of an integer and all the intergers below it; e.g. factorial four (4!) is equal to 24.</p>
     <p>4! = 4 * 3 * 2 * 1 = 24</p>
-
-    Here is how to write it in code...
-
-    try it out
+    Try out muy solution below.
     <div>
         <input id='Number' type='text' class='' value='' placeholder='Enter an integer'>
         <button onclick="SubmitBtn()">Submit</button>
     </div>
     Answer: <label id='Result'></label>
+    <div>
+        <h5>Basic:</h5>
+<pre><code class="js">factorial(n) {
+    let res = 0;
+    if (isNaN(n) || n < 0)
+        res = 'Please only use a positive integers, which must be greater than or equal to zero.'
+    else if (n > -1 && n < 2)
+        res = 1;
+    else {
+        for (var i=n; i>1; i--)
+            n *= (i-1);
+        res = n;
+    }
+}</code></pre>
+    </div>
     <script>
         const SubmitBtn = () => {
             let n = document.getElementById('Number').value;

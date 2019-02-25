@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google - Assesment</title>
+    <meta chartset="utf-8">
+</head>
+<body>
+    <h1>Google</h1>
+    <a href='/'>Home page</a>
+    <script>
+        //fill method
+        numOfOnes = (list, index) => {
+            var sum = 0;
+            for (let i = index; i < list.length -1; i++) {
+                if (list[i] === 1)
+                    sum += list[i]; 
+                if (list[i] === 0)
+                    break;
+            }
+            for (let i = index; i < list.length -1; i--) {
+                if (list[i] === 0)
+                    break;
+                if (list[i] === 1)
+                    sum += list[i]; 
+            }
+            return Math.max(sum-1, 0);
+        }
+
+        // 1d fill
+        const array = [0,1,1,1,0];
+        var result = numOfOnes(array, 2);
+        // console.log(result);
+
+        let count = 0;
+        let visited = {};
+        numOfOnesRecursive = (list, x, y) => {
+
+            // check if exists
+            if (!list[x] || !list[x][y])
+                return;
+
+            // check if already visited
+            if (list[x][y] === 0 || (typeof visited[x + ',' + y] !== 'undefined' && visited[x + ',' + y]))
+                return;
+
+            // increment
+            count++;
+
+            // mark as visited
+            visited[x + ',' + y] = true;
+
+            // up
+            numOfOnesRecursive(list, x, y-1);
+
+            // // down
+            numOfOnesRecursive(list, x, y+1);
+            
+            // // left
+            numOfOnesRecursive(list, x-1, y);
+
+            // // right
+            numOfOnesRecursive(list, x+1, y);
+
+            // return total
+            return count;
+        }
+
+        // // 2d fill
+        const $2dArray = [
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,1,1,0,1,0,0,0,0,0],
+            [0,1,1,1,1,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0]
+        ];
+        var $2dResult = numOfOnesRecursive($2dArray, 1, 0);
+        console.log($2dResult);
+    </script>
+
+</body>
+</html>
