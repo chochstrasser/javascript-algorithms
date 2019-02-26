@@ -4,7 +4,6 @@ var visited = {};
 var floodFill = (list, row, column, is2D) => {
     row = parseInt(row);
     column = parseInt(column);
-    console.log(is2D);
     if (is2D) {
         if (!list[row] || !list[row][column])
             return;        
@@ -31,7 +30,7 @@ var floodFill = (list, row, column, is2D) => {
 export default function (array, row, column) {
     count = 0;
     visited = {};
-    let list = JSON.parse(array);
+    let list = Array.isArray(array) ? array : JSON.parse(array);
     let is2D = false;
     if (list[0].constructor === Array)
         is2D = true;
