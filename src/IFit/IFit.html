@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IFit - Assesment</title>
+    <meta chartset="utf-8">
+</head>
+<body>
+    <h1>IFit</h1>
+    <a href='/'>Home page</a>
+    <script>
+
+        // find a number
+        function findNumber(n, k) {
+            const res = n.reduce((acc, curr) => {
+                if (curr == k)
+                    return 'YES';
+            });
+            return res || 'NO';
+        }
+        var n = [2,3,1];
+        var k = 5;
+        // console.log(findNumber(n,k));
+
+        // odd numbers
+        function oddNumbers(l, r) {
+            let array = [];
+            for (let i = l; l <= r; l++) {
+                if (l & 1)
+                    array.push(l);
+            }
+            return array;
+        }
+        var l = 2;
+        var r = 5;
+        // console.log(oddNumbers(l, r));
+
+
+        //
+        function createPackage(small, big, goal) {
+            let smallBagsUsed = 0;
+            while (goal > 0) {
+                if (small === 0 && big === 0)
+                    return -1;
+                if (big !== 0 && goal > 5) {
+                    goal = goal - 5;
+                    big--;
+                } else {
+                    goal = goal - 1;
+                    small--;
+                    smallBagsUsed++;
+                }
+            }
+            return smallBagsUsed;
+        }
+        var small = 2;
+        var big = 5;
+        var goal = 1;
+        // console.log(createPackage(small, big, goal));
+
+        //
+        function tripleThreat(a) {
+            const setA = [...new Set(a)];
+            setA.sort((a,b) => a-b);
+            for (let i = 0; i < setA.length-2; i++) {
+                if (setA[i] === setA[i+1]-1 && setA[i] === setA[i+2]-2)
+                    return 1;
+            };
+            return 0;
+        }
+        var a = [1,-2,7,8,9,0];
+        console.log(tripleThreat(a));
+
+    </script>
+
+</body>
+</html>

@@ -8,11 +8,103 @@
     <h1>Navitaire</h1>
     <a href='/'>Home page</a>
     <script>
-        function solution(n) {
-            return n;
+
+        // MissingInteger
+        function solution(A) {
+            let rtn = 1;
+            A = [...new Set(A)].sort((a,b) => a-b).filter(x => x>0);
+            for (let i = 0; i < A.length; i++) {
+                if (i+1 != A[i])
+                    return i+1;
+                else rtn = A[i]+1
+            }
+            return rtn;
         }
-        let n = 1;
-        console.log(solution(n));
+        var A = [1,3,6,4,1,2];
+        //var A = [1,2,3];
+        //var A = [-1,-3];
+        //var A = [-1,4,5,6,1];
+        // console.log(solution(A));
+
+        //
+        function solution(A,B) {
+            const a = A.split('');
+            const b = B.split('');
+            for (let i = 0; i < A.length; i++) {
+                // convert letters to integers for a array
+                if (a[i] == 'T') a[i] = 10;
+                else if (a[i] == 'J') a[i] = 11;
+                else if (a[i] == 'Q') a[i] = 12;
+                else if (a[i] == 'K') a[i] = 13;
+                else if (a[i] == 'A') a[i] = 14;
+                else a[i] = parseInt(a[i]);
+
+                // convert letters to integers for b array
+                if (b[i] == 'T') b[i] = 10;
+                else if (b[i] == 'J') b[i] = 11;
+                else if (b[i] == 'Q') b[i] = 12;
+                else if (b[i] == 'K') b[i] = 13;
+                else if (b[i] == 'A') b[i] = 14;
+                else b[i] = parseInt(b[i]);
+
+            }
+            const result = a.reduce((acc, val, i) => {
+                    if (val > b[i])
+                        acc += 1;
+                    return acc;
+                }, 0);
+            return result;
+        } 
+        var A = "111111";
+        var B = "111111";
+        // console.log(solution(A,B));
+
+
+        //
+        function solution(N, S) {
+            const s = S.split(' ');
+            let seatsAssigned = s.reduce((acc, curr, i) => {
+                acc[curr] = true;
+                return acc;
+            }, {});
+
+            let count = 0;
+            for (let i = 1; i < N+1; i++) {
+
+                // first three iA, iB, iC
+                if (!seatsAssigned[i+'A'] && !seatsAssigned[i+'B'] && !seatsAssigned[i+'C']) {
+                    seatsAssigned[i+'A'] = true;
+                    seatsAssigned[i+'B'] = true;
+                    seatsAssigned[i+'C'] = true;
+                    count++;
+                }
+
+                // middle four
+                if (!seatsAssigned[i+'D'] && !seatsAssigned[i+'E'] && !seatsAssigned[i+'F']) {
+                    seatsAssigned[i+'E'] = true;
+                    seatsAssigned[i+'F'] = true;
+                    seatsAssigned[i+'G'] = true;
+                    count++;
+                } else if (!seatsAssigned[i+'E'] && !seatsAssigned[i+'F'] && !seatsAssigned[i+'G']) {
+                    seatsAssigned[i+'E'] = true;
+                    seatsAssigned[i+'F'] = true;
+                    seatsAssigned[i+'G'] = true;
+                    count++;
+                }
+
+                // last three
+                if (!seatsAssigned[i+'H'] && !seatsAssigned[i+'J'] && !seatsAssigned[i+'K']) {
+                    seatsAssigned[i+'H'] = true;
+                    seatsAssigned[i+'J'] = true;
+                    seatsAssigned[i+'K'] = true;
+                    count++;
+                }
+            }
+            return count;
+        }
+        var N = 1;
+        var S = "";
+        console.log(solution(N,S));
     </script>
 </body>
 </html>
