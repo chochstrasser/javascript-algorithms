@@ -65,5 +65,7 @@ app.get('/algorithm/:name', (req, res, next) => {
   res.json(result);
 });
 
+app.use(express.static('public'))
+
 // listen
 app.listen('3000', () => console.log('app listening on port 3000!'));
