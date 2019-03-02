@@ -46,7 +46,16 @@ const mainRouter = (req, res, next) => {
 app.get('/', (req, res, next) => {
   mainRouter(req, res, next);  
 });
+
+// css or other files not HTML
+app.use(express.static('public'))
+
 app.get('/:name', (req, res, next) => {
+  // console.log(req.params);
+  // var path = require('path');
+  // var ext = path.extname(req.params.name);
+  // if (ext === '.css')
+  //   next('route');
   mainRouter(req, res, next);    
 });
 
@@ -64,8 +73,6 @@ app.get('/algorithm/:name', (req, res, next) => {
   // return result
   res.json(result);
 });
-
-app.use(express.static('public'))
 
 // listen
 app.listen('3000', () => console.log('app listening on port 3000!'));
