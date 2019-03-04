@@ -14,7 +14,7 @@
             crossorigin="anonymous">
         <link rel="stylesheet" href="../default.css">
     </head>
-    <body class="bg-dark">
+    <body>
         <header>
             <div class="collapse bg-dark" id="navbarHeader">
                 <div class="container">
@@ -44,7 +44,7 @@
         </header>     
         <main role="main"> 
             <section class="jumbotron text-center mb-0">
-                <div class="container">
+                <div class="container position-relative">
                     <h1 class="jumbotron-heading text-dark">Chase Hochstrasser</h1>
                     <img class="rounded-circle" style="height: 10rem;" src="https://s3-us-west-2.amazonaws.com/hochstrasser/images/portrait.jpg" alt="portrait"/>
                     <p class="lead text-muted"></p>
@@ -52,82 +52,65 @@
                         <a href="https://s3-us-west-2.amazonaws.com/hochstrasser/docs/Resume.pdf" class="btn btn-outline-dark my-2">View Resume</a>
                     </p>
                 </div>
+                <svg class="slant slant-bottom-right" viewBox="0 0 1 1" preserveAspectRatio="none">
+                    <polygon points="0,1 1,1 1,0">
+                </svg>
             </section>
 
-            <div class="album py-5 bg-light">
-                <div class="container">
+            <div class="py-5 algorithms">
+                <div class="algorithms__bg"></div>
+                <div class="container position-relative">
                     <h3>Algorithms</h3>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a href="Factorial.html">
-                                <div class="card mb-4 shadow-sm">
-                                    <img class="card-img-top" src="https://s3-us-west-2.amazonaws.com/hochstrasser/images/factorial.jpeg" alt="Card image">
-                                    <div class="card-body">
-                                        <p class="card-text">Factorial</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-muted">- mins</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="FloodFill.html">
-                                <div class="card mb-4 shadow-sm">
-                                    <img class="card-img-top" src="https://s3-us-west-2.amazonaws.com/hochstrasser/images/floodfill.jpeg" alt="Card image">
-                                    <div class="card-body">
-                                        <p class="card-text">FloodFill</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-muted">- mins</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="FizzBuzz.html">
-                                <div class="card mb-4 shadow-sm">
-                                    <img class="card-img-top" src="https://s3-us-west-2.amazonaws.com/hochstrasser/images/fizzbuzz.jpeg" alt="Card image">
-                                    <div class="card-body">
-                                        <p class="card-text">FizzBuzz</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-muted">- mins</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <ul>
+                        <li><a href="Factorial">Factorial</a></li>
+                        <li><a href="FloodFill">FloodFill</a></li>
+                        <li><a href="FizzBuzz">FizzBuzz</a></li>
+                        <li><a href="Flatten">Flatten</a></li>
+                        <li><a href="Factorial">Fibonacci</a></li>
+                        <li><a href="BinaryTree">Binary Tree</a></li>
+                        <li><a href="Trees">Trees</a></li>
+                        <li><a href="Grpahs">Graphs</a></li>
+                        <li><a href="Recusion">Recusion</a></li>
+                        <li><a href="DFS">DFS</a></li>
+                        <li><a href="BFS">BFS</a></li>
+                        <li><a href="DiameterBinaryTree">Diameter of Binary ree</a></li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="album py-5 bg-light">
-                <div class="container">
+            <div class="py-5 spacer">
+                <div class="container position-relative mt-5"></div>
+                <svg class="slant slant-top-left" viewBox="0 0 1 1" preserveAspectRatio="none">
+                    <polygon points="0,1 0,0 1,0">
+                </svg>
+                <svg class="slant slant-bottom-right" viewBox="0 0 1 1" preserveAspectRatio="none">
+                    <polygon points="0,1 1,1 1,0">
+                </svg>
+            </div>
+
+            <div class="py-5">
+                <div class="container position-relative mt-3">
                     <h3>Projects</h3>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a href="https://www.iamslimandsassy.com">
-                                <div class="card mb-4 shadow-sm">
-                                    <img class="card-img-top" src="https://s3-us-west-2.amazonaws.com/hochstrasser/images/slimandsassy.jpg" alt="Card image">
-                                    <div class="card-body">
-                                        <p class="card-text">Slim & Sassy</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-muted">- mins</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <ul>
+                        <li><a href="https://www.iamslimandsassy.com">Slim & Sassy</a></li>
+                    </ul>
                 </div>
             </div>
+
+            <div class="py-5 spacer">
+                    <div class="container position-relative mt-5"></div>
+                    <svg class="slant slant-top-left" viewBox="0 0 1 1" preserveAspectRatio="none">
+                        <polygon points="0,1 0,0 1,0">
+                    </svg>
+                    <svg class="slant slant-bottom-right" viewBox="0 0 1 1" preserveAspectRatio="none">
+                        <polygon points="0,1 1,1 1,0">
+                    </svg>
+                </div>
         </main>    
         <footer class="text-muted bg-dark">
             <div class="container">
                 <p class="float-right">
-                <a href="#" class="text-light">Back to top</a>
+                <a href="#" class="text-dark">Back to top</a>
                 </p>
                 <p></p>
             </div>

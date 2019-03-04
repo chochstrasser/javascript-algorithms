@@ -9,7 +9,7 @@ const mainRouter = (req, res, next) => {
 
     // if no page name then set to home page
     if (typeof fileName === 'undefined')
-      fileName = 'index.html';
+      fileName = 'index';
 
     // get page name without extention
     const fileNameNoExt = fileName.replace(/\.[^/.]+$/, "");
@@ -25,7 +25,7 @@ const mainRouter = (req, res, next) => {
     };
 
     // if not default page then change root path
-    if (fileNameNoExt !== 'index')
+    if (fileNameNoExt !== 'index') {
       options = {
         root: __dirname + '/src/' + fileNameNoExt + '/',
         dotfiles: 'deny',
@@ -34,9 +34,10 @@ const mainRouter = (req, res, next) => {
             'x-sent': true
         }
       }
+    }
 
     // display page
-    res.sendFile(fileName, options, (err) => {
+    res.sendFile(fileName + '.html', options, (err) => {
       if (err) next(err);
       else console.log('Sent:', fileName);
     });
@@ -51,11 +52,6 @@ app.get('/', (req, res, next) => {
 app.use(express.static('public'))
 
 app.get('/:name', (req, res, next) => {
-  // console.log(req.params);
-  // var path = require('path');
-  // var ext = path.extname(req.params.name);
-  // if (ext === '.css')
-  //   next('route');
   mainRouter(req, res, next);    
 });
 

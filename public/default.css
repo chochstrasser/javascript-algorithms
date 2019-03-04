@@ -1,3 +1,32 @@
-.jumbotron {
-    background: #83C1FF;
-}
+.jumbotron, .spacer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 50px; 
+    background-color: #3498DB;
+    background-size: cover;
+    position:relative;
+  }
+.slant-bottom-right {
+    position: absolute;
+    margin-top: -100px;
+    width: 100%;
+    height: 3rem;
+    bottom:0px;
+    left:0px;
+    z-index:1;
+  }
+  
+.slant-top-left {
+    position: absolute;
+    margin-top: 0;
+    width: 100%;
+    height: 3rem;
+    top: 0;
+    left: 0;
+    z-index:1;
+  }
+
+  .slant polygon {
+    fill: white;
+  }
