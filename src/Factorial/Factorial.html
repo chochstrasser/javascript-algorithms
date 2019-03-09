@@ -12,25 +12,43 @@
     <a href='/'>Home page</a>
     <p>A factorial is the product of an integer and all the intergers below it; e.g. factorial four (4!) is equal to 24.</p>
     <p>4! = 4 * 3 * 2 * 1 = 24</p>
-    Try out muy solution below.
+    Try out my solution below.
     <div>
         <input id='Number' type='text' class='' value='' placeholder='Enter an integer'>
         <button onclick="SubmitBtn()">Submit</button>
     </div>
     Answer: <label id='Result'></label>
+    <br />
+    <br />
     <div>
-        <h5>Basic:</h5>
+        <button onclick="switchState(1);">Iterative</button>
+        <button onclick="switchState(2);">Recursion</button>
+    </div>
+    <div class='Iterative'>
+        <h5>Iterative:</h5>
 <pre><code class="js">factorial(n) {
     let res = 0;
     if (isNaN(n) || n < 0)
         res = 'Please only use a positive integers, which must be greater than or equal to zero.'
-    else if (n > -1 && n < 2)
-        res = 1;
+    else if (n > -1 && n < 2) res = 1;
     else {
         for (var i=n; i>1; i--)
             n *= (i-1);
         res = n;
     }
+    return res;
+}</code></pre>
+    </div>
+    <div class='Recursion'>
+        <h5>Recursion:</h5>
+<pre><code class="js">factorial = (n) => {
+    let res;
+    if (isNaN(n) || n < 0)
+      res = 'Please only use a positive integers, which must be greater than or equal to zero.'
+    else if (n > 0) res = n * factorial(n-1);
+    else return 1;
+    return res;
+  };
 }</code></pre>
     </div>
     <script>
@@ -44,10 +62,26 @@
                     document.getElementById("Result").innerText = value[len];
                 }
             }
-            xhr.open('GET', '/algorithm/factorial?n=' + n, true);
+            xhr.open('GET', '/algorithm/factorial?n=' + n + '&state=' + state, true);
             xhr.setRequestHeader('Content-Type', 'text/plain');
             xhr.send();
         };
+
+        // switch state/view
+        var state = 1;
+        var switchState = (num) => {
+            this.state = num;
+            var i = document.getElementsByClassName('Iterative');
+            var r = document.getElementsByClassName('Recursion');
+            if (num === 1) {
+                i[0].style.display = "block";
+                r[0].style.display = "none";
+            } else {
+                i[0].style.display = "none";
+                r[0].style.display = "block";
+            }
+        }
+        switchState(this.state);
     </script>
 </body>
 </html>

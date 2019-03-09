@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Algorithms - FizzBuzz</title>
+    <meta chartset="utf-8">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+    <h1>FizzBuzz</h1>
+    <a href='/'>Home page</a>
+    <p>Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz"</p>
+    Try out my solution below.
+    <br />
+    <br />
+    <div>
+        <button onclick="switchState(1);">Iterative</button>
+        <button onclick="switchState(2);">Recursion</button>
+        <button onclick="switchState(3);">Shortest</button>
+    </div>
+    <div class='Iterative'>
+        <h5>Iterative:</h5>
+<pre><code class="js">FizzBuzz = () => {
+    for (let i = 1; i <= 100; i++) {
+        if (i % 15 === 0)
+            console.log('FizzBuzz');
+        else if (i % 3 === 0)
+            console.log('Fizz');
+        else if (i % 5 === 0)
+            console.log('Buzz');
+        else
+            console.log(i);
+    }
+}</code></pre>
+    </div>
+    <div class='Recursion'>
+        <h5>Iterative:</h5>
+<pre><code class="js">FizzBuzz = (n) => {
+    if (n % 15 === 0)
+        result.push('FizzBuzz');
+    else if (n % 3 === 0)
+        result.push('Fizz');
+    else if (n % 5 === 0)
+        result.push('Buzz');
+    else
+        result.push(n);
+    if (n < 100)
+        FizzBuzz(n+1);
+}</code></pre>
+    </div>
+    <div class='Shortest'>
+        <h5>Shortest</h5>
+<pre><code class="js">FizzBuzz = () => {
+    for(let i=0;i&lt;100;)result.push((++i%3?'':'fizz')+(i%5?'':'buzz')||i)
+}</code></pre>
+    </div>
+    Answer: <label id='Result'></label>
+    <script>
+        var state = 1;
+        var result = [];
+        
+        FizzBuzz = () => {
+            for (let i = 1; i <= 100; i++) {
+                if (i % 15 === 0)
+                    result.push('FizzBuzz');
+                else if (i % 3 === 0)
+                    result.push('Fizz');
+                else if (i % 5 === 0)
+                    result.push('Buzz');
+                else
+                    result.push(i);
+            }
+        }
+        FizzBuzzRecursive = (n) => {
+            if (n % 15 === 0)
+                result.push('FizzBuzz');
+            else if (n % 3 === 0)
+                result.push('Fizz');
+            else if (n % 5 === 0)
+                result.push('Buzz');
+            else
+                result.push(n);
+            if (n < 100)
+                FizzBuzzRecursive(n+1);
+        }
+        FizzBuzzShortest = () => {
+            for(let i=0;i<100;)result.push((++i%3?'':'fizz')+(i%5?'':'buzz')||i)
+        }
+        const reload = () => {
+            result = [];
+            if (this.state === 1) {
+                FizzBuzz();
+            } else if (this.state === 2) {
+                FizzBuzzRecursive(1);
+            } else {
+                FizzBuzzShortest();
+            }
+            let ol = document.createElement('ol');
+            result.forEach(element => {
+                var li = document.createElement('li');
+                ol.appendChild(li);
+                li.innerHTML = element;
+            });
+            var r = document.getElementById('Result');
+            if (r.firstChild !== null)
+                r.removeChild(r.firstChild);
+            r.appendChild(ol);
+        }
+
+        // switch state/view
+        var switchState = (num) => {
+            this.state = num;
+            var i = document.getElementsByClassName('Iterative');
+            var r = document.getElementsByClassName('Recursion');
+            var s = document.getElementsByClassName('Shortest');
+            if (num === 1) {
+                i[0].style.display = "block";
+                r[0].style.display = "none";
+                s[0].style.display = "none";
+            } else if (num === 2) {
+                i[0].style.display = "none";
+                r[0].style.display = "block";
+                s[0].style.display = "none";
+            } else {
+                i[0].style.display = "none";
+                r[0].style.display = "none";
+                s[0].style.display = "block";
+            }
+            reload();
+        }
+        switchState(this.state);
+    </script>
+</body>
+</html>

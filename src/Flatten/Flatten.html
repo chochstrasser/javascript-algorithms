@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Algorithms - Flatten</title>
+    <meta chartset="utf-8">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+    <h1>Flatten</h1>
+    <a href='/'>Home page</a>
+    <p>A function to flatten the nesting in an arbitrary list of values</p>
+    <p>Input is equivalent to the list below</p>
+    <p>[[1], 2, [[3, 4], 5], [[[]]], [[[6]]], 7, 8, []]</p>
+    <p>Result is equivalent to the list below</p>
+    <p>[1, 2, 3, 4, 5, 6, 7, 8]</p>
+    Try out my solution below.
+    <br />
+    <br />
+    <div>
+        <button onclick="switchState(1);">Iterative</button>
+        <button onclick="switchState(2);">Recursion</button>
+        <button onclick="switchState(3);">Shortest</button>
+    </div>
+    <div class='Iterative'>
+        <h5>Iterative:</h5>
+<pre><code class="js">Flatten = (array) => {
+    for (let i = 0; i <= array.length; i++) {
+        while (true) {
+            if (array[i] !== undefined && array[i].constructor === Array) {
+                array.splice(i, 1, ...array[i]);
+            } else 
+                break;
+        }
+    };
+    return array;
+}</code></pre>
+    </div>
+    <div class='Recursion'>
+        <h5>Iterative:</h5>
+<pre><code class="js">FlattenRecursive = (array) => {
+    return array.reduce((accumulator, currentValue) => {
+        return accumulator.concat(currentValue.constructor === Array ? Flatten(currentValue) : currentValue);
+    }, []);
+}</code></pre>
+    </div>
+    <div class='Shortest'>
+        <h5>Shortest</h5>
+<pre><code class="js">const Flatten = t => Array.isArray(t) ? [].concat(...t.map(Flatten)) : t;</code></pre>
+    </div>
+    Answer: <label id='Result'></label>
+    <script>
+        var state = 1;
+        const array = [[1], 2, [[3, 4], 5], [[[]]], [[[6]]], 7, 8, []];
+        
+        Flatten = (array) => {
+            for (let i = 0; i <= array.length; i++) {
+                while (true) {
+                    if (array[i] !== undefined && array[i].constructor === Array) {
+                        array.splice(i, 1, ...array[i]);
+                    } else 
+                        break;
+                }
+            };
+            return array;
+        }
+
+        FlattenRecursive = (array) => {
+            return array.reduce((accumulator, currentValue) => {
+                return accumulator.concat(currentValue.constructor === Array ? Flatten(currentValue) : currentValue);
+            }, []);
+        }
+
+        const FlattenShortest = t => Array.isArray(t) ? [].concat(...t.map(FlattenShortest)) : t;
+      
+        const reload = () => {
+            let result = null;
+            if (this.state === 1) {
+                result = Flatten(array);
+            } else if (this.state === 2) {
+                result = FlattenRecursive(array);
+            } else {
+                result = FlattenShortest(array);
+            }
+            var r = document.getElementById('Result');
+            if (r.firstChild !== null)
+                r.removeChild(r.firstChild);
+            r.innerHTML = JSON.stringify(result);
+        }
+
+        // switch state/view
+        var switchState = (num) => {
+            this.state = num;
+            var i = document.getElementsByClassName('Iterative');
+            var r = document.getElementsByClassName('Recursion');
+            var s = document.getElementsByClassName('Shortest');
+            if (num === 1) {
+                i[0].style.display = "block";
+                r[0].style.display = "none";
+                s[0].style.display = "none";
+            } else if (num === 2) {
+                i[0].style.display = "none";
+                r[0].style.display = "block";
+                s[0].style.display = "none";
+            } else {
+                i[0].style.display = "none";
+                r[0].style.display = "none";
+                s[0].style.display = "block";
+            }
+            reload();
+        }
+        switchState(this.state);
+    </script>
+</body>
+</html>

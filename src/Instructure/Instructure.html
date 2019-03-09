@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instructure - Assesment</title>
+    <meta chartset="utf-8">
+</head>
+<body>
+    <h1>Instructure</h1>
+    <a href='/'>Home page</a>
+
+    <style>
+        .el {
+          border: 5px solid #000;
+          margin: 10px;
+          padding: 10px 15px 15px 10px;
+          width: 200px;
+        }
+      </style>
+      
+      <div class="el">Hello, world!</div>
+    <script>
+
+
+        // console.log('one');
+        // setTimeout(() => {
+        // console.log('two');
+        // }, 0);
+        // console.log('three');
+
+        const matrix = [];
+        for (let i = 0; i < 4; i++){
+            let counter = i*3;
+            matrix[i] = [counter++, counter++, counter++];
+        }
+        // console.log(matrix);
+        // const x = matrix[1][2];
+        // console.log(x);
+
+        function sortArray(array) {
+            const max = array.length;
+            for (let i = 0; i < max; i++) {
+                let j = i;
+                while (array[j-1] > array[i]) {
+                    let tmp = array[j - 1];
+                    array[j - 1] = array[j];
+                    array[j] = tmp;
+                    j--;
+                }
+            }
+
+            return array;
+        }
+        //console.log(sortArray([1,0]));
+
+        /* Return an array of date string pieces
+        [
+            { type: 'weekday', value: 'Sunday' },
+            { type: 'literal', value: ', ' },
+            { type: 'month', value: 'January' },
+            { type: 'literal', value: ' ' },
+            { type: 'day', value: '1' },
+            { type: 'literal', value: ', ' },
+            { type: 'year', value: '2017' }
+        ]
+        */
+        // function formatToParts (date) {
+        //   // text = "Sunday, January 1, 2017"
+        //   // fields is an iterable of special field locations
+        //   const { text, fields } = formatForFields(date)
+
+        //   const parts = []
+        //   let previousEnd = 0
+        //   while (previousEnd < text.length) {
+        //     const { done, value } = fields.next()
+        //     let { type, start, end } = value || {}
+        //     if (done)
+        //       break;
+
+        //     if (previousEnd < start)
+        //       parts.push({ type: 'literal', value: text.slice(previousEnd, start) })
+        //     previousEnd = end
+
+        //     if (!done)
+        //       parts.push({ type, value: text.slice(start, end) })
+        //   }
+        //   return parts
+        // }
+
+        // console.log(formatToParts("Sunday, January 1, 2017"));
+
+
+        // var a = { x: 10, y: 11, z: 12 };
+        // var b = { x: 1, y: 2, z: 3 };
+        // var c = { a: 1, b: 2, c: 3 };
+        // var d = { }
+        // d.__proto__ = c;
+        // c.__proto__ = b;
+        // b.__proto__ = a;
+
+        // var x = d.x;
+        // console.log(x);
+
+    function polishNotation(input) {
+        let stack = [];
+        const postfix = input.split(' ');
+        postfix.forEach(element => {
+            if (!isNaN(element)) {
+                stack.push(element);
+            } else {
+                var a = stack.pop();
+                var b = stack.pop();
+                if (element === '+') stack.push(parseInt(a) + parseInt(b));
+                if (element === '-') stack.push(parseInt(b) - parseInt(a));
+                if (element === '*') stack.push(parseInt(a) * parseInt(b));
+                if (element === '/') stack.push(parseInt(b) / parseInt(a));
+            }
+        });
+        return stack.pop();
+    }
+    const str = "5 3 * 2 +";
+    console.log(polishNotation(str));
+
+
+    // water fill
+
+    </script>
+
+</body>
+</html>

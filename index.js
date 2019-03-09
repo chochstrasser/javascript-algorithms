@@ -61,7 +61,7 @@ app.get('/algorithm/:name', (req, res, next) => {
 
   // determine how to parse the data
   switch (req.params.name) {
-    case 'factorial': result = Algorithm.Factorial(req.query.n); break;
+    case 'factorial': result = Algorithm.Factorial(req.query.n, req.query.state); break;
     case 'floodfill': result = Algorithm.FloodFill(req.query.array, req.query.row, req.query.column); break;
     default: break;
   }
