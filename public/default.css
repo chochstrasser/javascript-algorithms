@@ -1,9 +1,45 @@
+.bg-light {
+    background: #f8f9fa;
+}
+.text-light {
+    color: #f8f9fa;
+}
+
+.btn-dark-green {
+    background-color: #234448;
+    color: #f8f9fa;
+}
+.btn-dark-green:hover {
+    color: #f8f9fa;
+}
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.bg-blue {
+    background-color: #37885d;
+}
+
+.navbar-dark [aria-expanded="false"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(34, 68, 72, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(34, 68, 72, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='m4 4l22 22 m-22 0l22 -22'/></svg>");
+}
+
+.navbar-dark .navbar-toggler,
+.navbar-dark .navbar-toggler:focus  {
+    outline: none;
+    border-color: rgba(34, 68, 72, 1);
+}
+
 .jumbotron, .spacer {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding-top: 50px; 
-    background-color: #3498DB;
+    background-color: #37885d;
     background-size: cover;
     position:relative;
     border-radius: unset;
@@ -50,7 +86,7 @@
 }
 
 .slant polygon {
-    fill: white;
+    fill: #f8f9fa;
 }
 
 li > a,
@@ -58,3 +94,21 @@ li > a:hover {
   color: #343a40;
   text-decoration: none;
 }
+
+.parallax {
+    /* The image used */
+    background-image: url("https://www.w3schools.com/howto/img_parallax.jpg");
+  
+    /* Set a specific height */
+    min-height: 500px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .parallax .spacer {
+      background-color: unset;
+  }
