@@ -1,6 +1,15 @@
+body {
+    font-family: 'Spinnaker', sans-serif;
+}
+
 .bg-light {
     background: #f8f9fa;
 }
+
+.bg-dark-green {
+    background-color: #234448 !important;
+}
+
 .text-light {
     color: #f8f9fa;
 }
@@ -22,16 +31,16 @@
 }
 
 .navbar-dark [aria-expanded="false"] .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(34, 68, 72, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(248, 249, 250, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 .navbar-dark .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(34, 68, 72, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='m4 4l22 22 m-22 0l22 -22'/></svg>");
+    background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(248, 249, 250, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='m4 4l22 22 m-22 0l22 -22'/></svg>");
 }
 
 .navbar-dark .navbar-toggler,
 .navbar-dark .navbar-toggler:focus  {
     outline: none;
-    border-color: rgba(34, 68, 72, 1);
+    background-color: #234448;
 }
 
 .jumbotron, .spacer {
@@ -97,7 +106,7 @@ li > a:hover {
 
 .parallax {
     /* The image used */
-    background-image: url("https://www.w3schools.com/howto/img_parallax.jpg");
+    background-image: url("https://s3-us-west-2.amazonaws.com/hochstrasser/images/saintGeorgeUtah.jpg");
   
     /* Set a specific height */
     min-height: 500px; 
@@ -111,4 +120,23 @@ li > a:hover {
 
   .parallax .spacer {
       background-color: unset;
+  }
+
+  footer {
+      margin-top: -8rem;
+  }
+
+  .floating-card {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: -5rem !important;
+  }
+
+  .bg-light-green {
+      background-color: #37885d;
+  }
+
+
+  .floating-card a:hover {
+      text-decoration: none;
   }
